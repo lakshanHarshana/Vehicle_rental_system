@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ApexDrive</title>
+  <meta name="description" content="Contact ApexDrive customer support via Phone, Email, WhatsApp, or Social Media.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">🏎️ Apex<span class="accent">Drive</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link">Our Fleet</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+    <div id="nav-actions" class="nav-actions"></div>
+  </header>
+
+  <main class="container" style="max-width: 1150px;">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Get in Touch with ApexDrive</h1>
+        <p class="page-subtitle">We are here to assist with reservations, fleet inquiries, and 24/7 concierge support.</p>
+      </div>
+    </div>
+
+    <!-- 2-Column Contact Grid -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+      
+      <!-- Column 1: Contact Form & Customer Support History -->
+      <div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; backdrop-filter: blur(12px); margin-bottom: 2rem;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Send Support Message</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Fill out the form below and our team will get back to you promptly.</p>
+          
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label">Your Full Name</label>
+              <input type="text" id="msg-name" class="form-control" placeholder="John Doe" required />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="msg-email" class="form-control" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject</label>
+                <input type="text" id="msg-subject" class="form-control" placeholder="Reservation Inquiry" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message Details</label>
+              <textarea id="msg-body" class="form-control" placeholder="Tell us how we can help you..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Logged-in Customer Support History & Admin Replies -->
+        <div id="cust-support-history-section" style="display: none;">
+          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 1rem;">💬 My Support History & Admin Replies</h3>
+          <div id="my-messages-container" style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Loaded dynamically via contact script -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Contact Info & Social Media -->
+      <div class="contact-info-card">
+        <h2 style="font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;">Direct Contact Info</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Reach us directly through any of our support channels below.</p>
+
+        <!-- Phone -->
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <strong style="color: #fff; font-size: 0.95rem;">Customer Hotline & Concierge</strong>
+            <div style="color: var(--text-muted); font-size: 0.88rem; margin-top: 2px;">
+              +1 (800) 555-APEX &nbsp;|&nbsp; +1 (555) 019-2839
+            </div>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <strong style="color: #fff; font-size: 0.95rem;">Email Support</strong>
+            <div style="color: var(--text-muted); font-size: 0.88rem; margin-top: 2px;">
+              <a href="mailto:support@apexdrive.com">support@apexdrive.com</a><br>
+              <a href="mailto:reservations@apexdrive.com">reservations@apexdrive.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <strong style="color: #fff; font-size: 0.95rem;">Headquarters Address</strong>
+            <div style="color: var(--text-muted); font-size: 0.88rem; margin-top: 2px;">
+              742 Evergreen Parkway, Suite 500<br>New York, NY 10001, United States
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="contact-item">
+          <div class="contact-icon">🕒</div>
+          <div>
+            <strong style="color: #fff; font-size: 0.95rem;">Operating Hours</strong>
+            <div style="color: var(--text-muted); font-size: 0.88rem; margin-top: 2px;">
+              Monday – Sunday: 24/7 Roadside & Rental Support
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 0.5rem 0;" />
+
+        <!-- Social Channels & WhatsApp -->
+        <div>
+          <strong style="color: #fff; font-size: 0.95rem; display: block; margin-bottom: 0.75rem;">Connect on Social Media & Messaging</strong>
+          <div class="social-links-grid">
+            <a href="https://wa.me/15550192839" target="_blank" class="social-btn social-whatsapp">
+              💬 WhatsApp Us
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-btn social-facebook">
+              🌐 Facebook
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-btn social-instagram">
+              📸 Instagram
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-btn social-twitter">
+              🐦 Twitter / X
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Master Multi-Column Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="nav-brand" style="margin-bottom: 1rem;">🏎️ Apex<span class="accent">Drive</span></div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          Premier luxury and fleet vehicle rentals. Seamless online reservations, transparent daily rates, and 24/7 dedicated concierge service.
+        </p>
+        <div class="social-links-grid">
+          <a href="https://wa.me/15550192839" target="_blank" class="social-btn social-whatsapp" style="padding: 6px 12px; font-size: 0.8rem;">💬 WhatsApp</a>
+          <a href="https://facebook.com" target="_blank" class="social-btn social-facebook" style="padding: 6px 12px; font-size: 0.8rem;">Facebook</a>
+          <a href="https://instagram.com" target="_blank" class="social-btn social-instagram" style="padding: 6px 12px; font-size: 0.8rem;">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vehicles.html">Browse Fleet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Customer Portal</div>
+        <ul class="footer-links">
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="customer-dashboard.html">My Bookings</a></li>
+          <li><a href="admin-dashboard.html">Admin Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Direct Support</div>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">📞 Phone: +1 (800) 555-APEX</p>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">✉️ Email: support@apexdrive.com</p>
+        <p style="font-size: 0.88rem;">📍 742 Evergreen Pkwy, New York, NY</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ApexDrive Vehicle Rentals. All rights reserved.</div>
+      <div>Designed with HTML5, CSS3, Express & MySQL.</div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = getUser();
+      if (user) {
+        if (user.first_name && user.last_name) {
+          document.getElementById('msg-name').value = `${user.first_name} ${user.last_name}`;
+        }
+        if (user.email) {
+          document.getElementById('msg-email').value = user.email;
+        }
+
+        // If customer is logged in, show Support History & Admin Replies
+        if (user.role === 'customer') {
+          const historySection = document.getElementById('cust-support-history-section');
+          if (historySection) {
+            historySection.style.display = 'block';
+            loadContactPageHistory();
+          }
+        }
+      }
+
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('msg-name').value.trim();
+        const email = document.getElementById('msg-email').value.trim();
+        const subject = document.getElementById('msg-subject').value.trim();
+        const message = document.getElementById('msg-body').value.trim();
+
+        try {
+          const res = await apiCall('/messages', 'POST', { name, email, subject, message });
+          showToast(res.message, 'success');
+          form.reset();
+          if (user && user.role === 'customer') {
+            loadContactPageHistory();
+          }
+        } catch (err) {
+          showToast(err.message, 'error');
+        }
+      });
+    });
+
+    async function loadContactPageHistory() {
+      const container = document.getElementById('my-messages-container');
+      if (!container) return;
+
+      try {
+        container.innerHTML = '<div style="color: var(--text-muted);">Loading support message history...</div>';
+        const res = await apiCall('/messages/my-messages');
+
+        if (!res.messages || res.messages.length === 0) {
+          container.innerHTML = '<div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-lg); color: var(--text-muted); font-size: 0.88rem;">No support messages sent yet. Use the form above to send an inquiry.</div>';
+          return;
+        }
+
+        container.innerHTML = res.messages.map(m => `
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; backdrop-filter: blur(12px);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+              <div>
+                <span style="font-size: 0.75rem; color: var(--primary-gold); font-weight: 700; text-transform: uppercase;">Ticket #${m.id}</span>
+                <h4 style="color: #fff; font-size: 1rem; margin: 2px 0 0 0;">📌 ${escapeHtml(m.subject)}</h4>
+              </div>
+              <span class="status-badge status-${m.status === 'replied' ? 'available' : m.status === 'unread' ? 'status-pending' : 'status-completed'}">
+                ${m.status === 'replied' ? '✅ Replied by Admin' : m.status === 'unread' ? '⏳ Awaiting Reply' : 'Read by Admin'}
+              </span>
+            </div>
+
+            <div style="margin-bottom: 0.75rem; padding-left: 12px; border-left: 3px solid #25D366;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                <strong style="color: #25D366; font-size: 0.85rem;">👤 You (Customer Inquiry)</strong>
+                <span style="font-size: 0.72rem; color: var(--text-dim);">${new Date(m.created_at).toLocaleString()}</span>
+              </div>
+              <p style="color: #e9edef; font-size: 0.9rem; line-height: 1.5; margin: 0;">"${escapeHtml(m.message)}"</p>
+            </div>
+
+            ${m.admin_reply ? `
+              <div style="margin-left: 1rem; padding: 0.85rem; background: rgba(229, 184, 66, 0.08); border-left: 3px solid var(--primary-gold); border-radius: var(--radius-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="color: var(--primary-gold); font-size: 0.85rem;">👑 Fleet Administration Response:</strong>
+                  <span style="font-size: 0.72rem; color: var(--text-dim);">${m.replied_at ? new Date(m.replied_at).toLocaleString() : ''}</span>
+                </div>
+                <p style="color: #ffffff; font-size: 0.9rem; line-height: 1.5; margin: 0;">"${escapeHtml(m.admin_reply)}"</p>
+              </div>
+            ` : `
+              <div style="margin-left: 1rem; padding: 0.6rem 0.85rem; background: rgba(255, 255, 255, 0.03); border: 1px dashed var(--border-color); border-radius: var(--radius-md); color: var(--text-muted); font-size: 0.82rem; font-style: italic;">
+                ⏳ Message queued for admin review. Concierge will reply shortly.
+              </div>
+            `}
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = `<div style="color: #ef4444;">Error loading messages: ${err.message}</div>`;
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

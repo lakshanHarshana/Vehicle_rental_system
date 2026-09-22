@@ -1,0 +1,15 @@
+# Render Infrastructure as Code Blueprint
+# Web Service (Express Node.js Backend API)
+services:
+  - type: web
+    name: vehicle-rental-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_ENGINE
+        value: auto

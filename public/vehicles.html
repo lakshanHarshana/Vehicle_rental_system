@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Vehicles - ApexDrive</title>
+  <meta name="description" content="Browse and search vehicle fleet with real-time availability filters.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      🏎️ Apex<span class="accent">Drive</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link active">Our Fleet</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div id="nav-actions" class="nav-actions"></div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Vehicle Fleet Directory</h1>
+        <p class="page-subtitle">Search, filter, and reserve your ideal rental vehicle.</p>
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="filter-bar">
+      <div class="filter-group" style="flex: 2; min-width: 250px;">
+        <input type="text" id="search-input" class="form-control" placeholder="🔍 Search make, model, or license plate..." />
+      </div>
+      <div class="filter-group">
+        <select id="category-filter" class="form-control">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <select id="fuel-filter" class="form-control">
+          <option value="">All Fuel Types</option>
+          <option value="Gasoline">Gasoline</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="Electric">Electric</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <select id="transmission-filter" class="form-control">
+          <option value="">All Transmissions</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Vehicles Grid -->
+    <div id="vehicle-grid" class="grid-3">
+      <!-- Loaded dynamically via vehicles.js -->
+    </div>
+  </main>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Reserve Vehicle</h2>
+        <button onclick="closeModal('booking-modal-overlay')" class="modal-close">&times;</button>
+      </div>
+      <div id="booking-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Master Multi-Column Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="nav-brand" style="margin-bottom: 1rem;">🏎️ Apex<span class="accent">Drive</span></div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          Premier luxury and fleet vehicle rentals. Seamless online reservations, transparent daily rates, and 24/7 dedicated concierge service.
+        </p>
+        <div class="social-links-grid">
+          <a href="https://wa.me/15550192839" target="_blank" class="social-btn social-whatsapp" style="padding: 6px 12px; font-size: 0.8rem;">💬 WhatsApp</a>
+          <a href="https://facebook.com" target="_blank" class="social-btn social-facebook" style="padding: 6px 12px; font-size: 0.8rem;">Facebook</a>
+          <a href="https://instagram.com" target="_blank" class="social-btn social-instagram" style="padding: 6px 12px; font-size: 0.8rem;">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vehicles.html">Browse Fleet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Customer Portal</div>
+        <ul class="footer-links">
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="customer-dashboard.html">My Bookings</a></li>
+          <li><a href="admin-dashboard.html">Admin Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Direct Support</div>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">📞 Phone: +1 (800) 555-APEX</p>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">✉️ Email: support@apexdrive.com</p>
+        <p style="font-size: 0.88rem;">📍 742 Evergreen Pkwy, New York, NY</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ApexDrive Vehicle Rentals. All rights reserved.</div>
+      <div>Designed with HTML5, CSS3, Express & MySQL.</div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/vehicles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('category_id');
+      if (catParam) {
+        setTimeout(() => {
+          const catFilter = document.getElementById('category-filter');
+          if (catFilter) {
+            catFilter.value = catParam;
+            loadVehicles();
+          }
+        }, 300);
+      }
+    });
+  </script>
+</body>
+</html>

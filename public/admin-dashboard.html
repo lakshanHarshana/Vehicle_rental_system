@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control Center - ApexDrive</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">🏎️ Apex<span class="accent">Drive</span> <span style="font-size: 0.75rem; color: var(--primary-gold); font-weight: 500; margin-left: 6px;">[ADMIN]</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link">Fleet View</a></li>
+      <li><a href="admin-dashboard.html" class="nav-link active">Admin Panel</a></li>
+    </ul>
+    <div id="nav-actions" class="nav-actions"></div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">Admin Management Dashboard</h1>
+        <p class="page-subtitle">Full system administration, fleet CRUD operations, bookings workflow, and customer inquiries.</p>
+      </div>
+    </div>
+
+    <!-- Summary Widgets -->
+    <div class="grid-4" style="margin-bottom: 2.5rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+      <div class="stat-widget">
+        <div class="stat-icon">🏎️</div>
+        <div>
+          <div id="stat-vehicles" class="stat-value">0</div>
+          <div class="stat-label">Total Vehicles</div>
+        </div>
+      </div>
+
+      <div class="stat-widget">
+        <div class="stat-icon">✅</div>
+        <div>
+          <div id="stat-available" class="stat-value">0</div>
+          <div class="stat-label">Available Fleet</div>
+        </div>
+      </div>
+
+      <div class="stat-widget">
+        <div class="stat-icon">📅</div>
+        <div>
+          <div id="stat-rentals" class="stat-value">0</div>
+          <div class="stat-label">Total Bookings</div>
+        </div>
+      </div>
+
+      <div class="stat-widget">
+        <div class="stat-icon">💵</div>
+        <div>
+          <div id="stat-revenue" class="stat-value">$0.00</div>
+          <div class="stat-label">Total Revenue</div>
+        </div>
+      </div>
+
+      <div class="stat-widget" onclick="switchAdminTab('messages')" style="cursor: pointer;">
+        <div class="stat-icon">💬</div>
+        <div>
+          <div id="stat-messages" class="stat-value">0</div>
+          <div class="stat-label">Customer Messages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div style="display: flex; gap: 0.75rem; border-bottom: 1px solid var(--border-color); margin-bottom: 2rem; flex-wrap: wrap;">
+      <button id="btn-tab-rentals" onclick="switchAdminTab('rentals')" class="btn btn-secondary active">Manage Rentals</button>
+      <button id="btn-tab-vehicles" onclick="switchAdminTab('vehicles')" class="btn btn-secondary">Manage Vehicles Fleet</button>
+      <button id="btn-tab-categories" onclick="switchAdminTab('categories')" class="btn btn-secondary">Manage Categories</button>
+      <button id="btn-tab-customers" onclick="switchAdminTab('customers')" class="btn btn-secondary">Manage Customers</button>
+      <button id="btn-tab-messages" onclick="switchAdminTab('messages')" class="btn btn-secondary">
+        📩 Customer Messages 
+        <span id="badge-unread-messages" class="status-badge status-pending" style="display:none; font-size:0.75rem; padding: 2px 8px; margin-left: 4px;">0</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: Manage Rentals -->
+    <section id="tab-rentals">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.4rem;">Customer Booking Transactions</h2>
+        <button onclick="loadAdminRentals()" class="btn btn-secondary btn-sm">Refresh List</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Rental ID</th>
+              <th>Customer</th>
+              <th>Vehicle</th>
+              <th>Duration</th>
+              <th>Total Cost</th>
+              <th>Status</th>
+              <th>Update Status</th>
+            </tr>
+          </thead>
+          <tbody id="admin-rentals-table">
+            <!-- Loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 2: Manage Vehicles Fleet -->
+    <section id="tab-vehicles" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.4rem;">Fleet Directory (Vehicles CRUD)</h2>
+        <button onclick="openVehicleModal()" class="btn btn-primary btn-sm">+ Add New Vehicle</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Vehicle Info</th>
+              <th>Category</th>
+              <th>License Plate</th>
+              <th>Rate</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-vehicles-table">
+            <!-- Loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 3: Manage Categories -->
+    <section id="tab-categories" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.4rem;">Vehicle Categories (Categories CRUD)</h2>
+        <button onclick="openCategoryModal()" class="btn btn-primary btn-sm">+ Add Category</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category Name</th>
+              <th>Daily Rate</th>
+              <th>Vehicles Count</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-categories-table">
+            <!-- Loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: Manage Customers -->
+    <section id="tab-customers" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.4rem;">Registered Customer Directory</h2>
+        <button onclick="loadAdminCustomers()" class="btn btn-secondary btn-sm">Refresh Customers</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Driver License</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-customers-table">
+            <!-- Loaded dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 5: Manage Customer Messages -->
+    <section id="tab-messages" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h2 style="font-size: 1.4rem;">Customer Contact Messages & Inquiries</h2>
+        <button onclick="loadAdminMessages()" class="btn btn-secondary btn-sm">Refresh Messages</button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Sender</th>
+              <th>Subject</th>
+              <th style="min-width: 250px;">Message Body</th>
+              <th>Received Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-messages-table">
+            <!-- Loaded dynamically via admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Admin Modal Overlay for CRUD operations -->
+  <div id="admin-modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="admin-modal-title">Admin Action</h2>
+        <button onclick="closeModal('admin-modal-overlay')" class="modal-close">&times;</button>
+      </div>
+      <div id="admin-modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Vehicle Rental Management System | Built with Express, MySQL, HTML5 & CSS3.</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

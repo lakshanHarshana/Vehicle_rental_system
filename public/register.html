@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Registration - ApexDrive</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">🏎️ Apex<span class="accent">Drive</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link">Our Fleet</a></li>
+    </ul>
+    <div id="nav-actions" class="nav-actions"></div>
+  </header>
+
+  <main class="container">
+    <div class="auth-card" style="max-width: 580px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; text-align: center;">Create Customer Account</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 2rem;">
+        Register to reserve luxury and economy vehicles instantly.
+      </p>
+
+      <form id="register-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" id="first_name" class="form-control" placeholder="John" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" id="last_name" class="form-control" placeholder="Doe" required />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="john.doe@example.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Minimum 6 characters" required minlength="6" />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" id="phone" class="form-control" placeholder="555-0192" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Driver License Number</label>
+            <input type="text" id="driver_license" class="form-control" placeholder="DL-987654321" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Residential Address</label>
+          <input type="text" id="address" class="form-control" placeholder="123 Main Street, Suite 400, New York, NY" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 12px;">Complete Registration</button>
+      </form>
+
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); text-align: center;">
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Already have an account? <a href="login.html">Sign in here</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Vehicle Rental Management System | Built with Express, MySQL, HTML5 & CSS3.</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

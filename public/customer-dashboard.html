@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - ApexDrive</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">🏎️ Apex<span class="accent">Drive</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link">Our Fleet</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      
+    </ul>
+    <div id="nav-actions" class="nav-actions"></div>
+  </header>
+
+  <main class="container">
+    <!-- Page Header -->
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 class="page-title">Customer Portal</h1>
+        <p class="page-subtitle">Manage your active reservations, review completed rentals, and update profile details.</p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button onclick="document.getElementById('sec-bookings').scrollIntoView({ behavior: 'smooth' })" class="btn btn-secondary btn-sm">🚗 My Bookings</button>
+        <button onclick="document.getElementById('sec-profile').scrollIntoView({ behavior: 'smooth' })" class="btn btn-secondary btn-sm">👤 My Profile</button>
+        <a href="contact.html" class="btn btn-primary btn-sm">💬 Support & Messages</a>
+      </div>
+    </div>
+
+    <!-- Section 1: Rentals Table -->
+    <section id="sec-bookings" style="margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.4rem; margin-bottom: 1rem; color: #fff;">My Rental Bookings</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Vehicle</th>
+              <th>Dates</th>
+              <th>Duration</th>
+              <th>Total Cost</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="my-bookings-list">
+            <!-- Rendered via customer.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 2: Profile Edit Section -->
+    <section id="sec-profile" style="max-width: 700px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.4rem; margin-bottom: 1rem; color: #fff;">Edit Customer Profile</h2>
+      <form id="profile-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" id="prof-first-name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" id="prof-last-name" class="form-control" required />
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="text" id="prof-phone" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Driver License Number</label>
+            <input type="text" id="prof-license" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Address</label>
+          <input type="text" id="prof-address" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Review Modal Overlay -->
+  <div id="review-modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Write Vehicle Review</h2>
+        <button onclick="closeModal('review-modal-overlay')" class="modal-close">&times;</button>
+      </div>
+      <form id="review-form">
+        <input type="hidden" id="rev-vehicle-id" />
+        <div class="form-group">
+          <label class="form-label">Rating (1 to 5 Stars)</label>
+          <select id="rev-rating" class="form-control" required>
+            <option value="5">⭐⭐⭐⭐⭐ (5/5) - Excellent</option>
+            <option value="4">⭐⭐⭐⭐ (4/5) - Very Good</option>
+            <option value="3">⭐⭐⭐ (3/5) - Average</option>
+            <option value="2">⭐⭐ (2/5) - Poor</option>
+            <option value="1">⭐ (1/5) - Terrible</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Review & Experience</label>
+          <textarea id="rev-comment" class="form-control" placeholder="Share details of your driving experience..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="nav-brand" style="margin-bottom: 1rem;">🏎️ Apex<span class="accent">Drive</span></div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          Premier luxury and fleet vehicle rentals.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vehicles.html">Our Fleet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/customer.js"></script>
+</body>
+</html>

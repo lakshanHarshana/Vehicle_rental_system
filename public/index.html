@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexDrive - Luxury & Fleet Vehicle Rentals</title>
+  <meta name="description" content="Vehicle Rental Management System built with Express, MySQL 3NF database, and modern web GUI.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      🏎️ Apex<span class="accent">Drive</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="vehicles.html" class="nav-link">Our Fleet</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div id="nav-actions" class="nav-actions">
+      <!-- Dynamic Auth Buttons loaded via api.js -->
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-tag">✨ Premium Rental Experience</span>
+        <h1 class="hero-title">Rent Luxury & Economy Fleet Cars Effortlessly</h1>
+        <p class="hero-description">
+          Choose from executive sedans, spacious SUVs, and electric vehicles. Transparent daily rates, instant booking, and guaranteed vehicle availability.
+        </p>
+        <div class="hero-actions">
+          <a href="vehicles.html" class="btn btn-primary btn-lg">Browse All Vehicles</a>
+          <a href="register.html" class="btn btn-secondary btn-lg">Create Account</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section style="margin-bottom: 4rem;">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Explore Fleet Categories</h2>
+          <p class="page-subtitle">Select a category tailored to your travel style and group size.</p>
+        </div>
+      </div>
+      
+      <div id="home-categories" class="grid-3">
+        <!-- Dynamically rendered categories -->
+      </div>
+    </section>
+
+    <!-- Featured Vehicles Showcase -->
+    <section style="margin-bottom: 4rem;">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Featured Fleet Vehicles</h2>
+          <p class="page-subtitle">Top-rated vehicles available for immediate reservation.</p>
+        </div>
+        <a href="vehicles.html" class="btn btn-secondary">View Complete Fleet &rarr;</a>
+      </div>
+
+      <div id="vehicle-grid" class="grid-3">
+        <!-- Dynamically rendered vehicle cards -->
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section style="margin-bottom: 4rem;">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Customer Reviews & Experiences</h2>
+          <p class="page-subtitle">Real feedback submitted by verified customers after completing their rentals.</p>
+        </div>
+      </div>
+
+      <div id="home-reviews-grid" class="grid-3">
+        <!-- Loaded dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Reserve Vehicle</h2>
+        <button onclick="closeModal('booking-modal-overlay')" class="modal-close">&times;</button>
+      </div>
+      <div id="booking-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Master Multi-Column Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="nav-brand" style="margin-bottom: 1rem;">🏎️ Apex<span class="accent">Drive</span></div>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          Premier luxury and fleet vehicle rentals. Seamless online reservations, transparent daily rates, and 24/7 dedicated concierge service.
+        </p>
+        <div class="social-links-grid">
+          <a href="https://wa.me/15550192839" target="_blank" class="social-btn social-whatsapp" style="padding: 6px 12px; font-size: 0.8rem;">💬 WhatsApp</a>
+          <a href="https://facebook.com" target="_blank" class="social-btn social-facebook" style="padding: 6px 12px; font-size: 0.8rem;">Facebook</a>
+          <a href="https://instagram.com" target="_blank" class="social-btn social-instagram" style="padding: 6px 12px; font-size: 0.8rem;">Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vehicles.html">Browse Fleet</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Customer Portal</div>
+        <ul class="footer-links">
+          <li><a href="login.html">Sign In</a></li>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="customer-dashboard.html">My Bookings</a></li>
+          <li><a href="admin-dashboard.html">Admin Portal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Direct Support</div>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">📞 Phone: +1 (800) 555-APEX</p>
+        <p style="font-size: 0.88rem; margin-bottom: 6px;">✉️ Email: support@apexdrive.com</p>
+        <p style="font-size: 0.88rem;">📍 742 Evergreen Pkwy, New York, NY</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ApexDrive Vehicle Rentals. All rights reserved.</div>
+      <div>Designed with HTML5, CSS3, Express & MySQL.</div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/vehicles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Load Categories
+      try {
+        const catRes = await apiCall('/categories');
+        const homeCat = document.getElementById('home-categories');
+        if (catRes.success && homeCat) {
+          homeCat.innerHTML = catRes.categories.map(c => `
+            <div class="card" onclick="window.location.href='vehicles.html?category_id=${c.id}'" style="cursor: pointer;">
+              <div class="card-img-wrapper" style="height: 160px;">
+                <img src="${c.image_url}" alt="${c.name}" class="card-img" />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">${c.name}</h3>
+                <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">${c.description}</p>
+                <div class="card-footer">
+                  <span style="color: var(--primary-gold); font-weight: 700;">From $${parseFloat(c.daily_rate).toFixed(2)}/day</span>
+                  <span class="btn btn-secondary btn-sm">Explore &rarr;</span>
+                </div>
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch(e){}
+
+      // Load Recent Customer Reviews
+      try {
+        const revRes = await apiCall('/reviews/recent');
+        const revGrid = document.getElementById('home-reviews-grid');
+        if (revRes.success && revGrid && revRes.reviews.length > 0) {
+          revGrid.innerHTML = revRes.reviews.map(r => `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                <img src="${r.vehicle_image}" alt="${r.make}" style="width: 48px; height: 34px; object-fit: cover; border-radius: 4px;" />
+                <div>
+                  <strong style="color: #fff; font-size: 0.95rem;">${r.make} ${r.model}</strong>
+                  <div style="color: var(--primary-gold); font-size: 0.85rem;">${'⭐'.repeat(r.rating)} (${r.rating}/5)</div>
+                </div>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; font-style: italic;">
+                "${r.comment}"
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border-color); font-size: 0.8rem; color: var(--text-dim);">
+                <span style="color: var(--text-main); font-weight: 600;">— ${r.customer_name}</span>
+                <span>${new Date(r.created_at).toLocaleDateString()}</span>
+              </div>
+            </div>
+          `).join('');
+        } else if (revGrid) {
+          revGrid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1/-1;">No reviews available yet.</p>';
+        }
+      } catch(e){}
+    });
+  </script>
+</body>
+</html>
